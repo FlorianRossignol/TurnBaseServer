@@ -4,7 +4,7 @@
 
 #include <SFML/Window/Event.hpp>
 
-Engine::Engine() : window_(sf::VideoMode(640,480), "Turn Based")
+Engine::Engine() : window_(sf::VideoMode(1920,1080), "Naval Battle")
 {
 }
 

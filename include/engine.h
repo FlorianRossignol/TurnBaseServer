@@ -2,7 +2,6 @@
 
 #include <vector>
 #include <system.h>
-
 #include <SFML/Graphics/RenderWindow.hpp>
 
 
