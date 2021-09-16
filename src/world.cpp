@@ -1,16 +1,43 @@
 #include "world.h"
 #include <iostream>
+#include <echo_client.h>
+#include <boat.h>
+#include <SFML/Graphics.hpp>
 
-world::world::world()
+World::World::World()
 {
-	map1 = map1;
-	map2 = map2;
+	map = map;
 }
 
-void world::world::PlaceBoat()
+int World::Draw()
 {
+	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Naval battle");
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window.close();
+		};
+		
+		window.display();
+	}
+	return EXIT_SUCCESS;
 }
 
-void world::world::ViewMap()
+void World::World::PlaceBoat()
 {
+	
 }
+
+void World::World::ViewMap()
+{
+		
+}
+
+bool World::CheckImpact()
+{
+	return false;
+}
+

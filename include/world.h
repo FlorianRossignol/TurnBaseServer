@@ -2,35 +2,15 @@
 #include <iostream>
 #include <array>
 
-	class world
+	class World
 	{
+
 	public:
-		world();
+		World();
+		int Draw();
 		void PlaceBoat();
 		void ViewMap();
+		bool CheckImpact();
 	private:
-		std::string map1 =
-			"#########"
-			"#12345678"
-			"Axxxxxxxx"
-			"Bxxxxxxxx"
-			"Cxxxxxxxx"
-			"Dxxxxxxxx"
-			"Exxxxxxxx"
-			"Fxxxxxxxx"
-			"Gxxxxxxxx"
-			"Hxxxxxxxx"
-			"#########";
-		std::string map2 =
-			"#########"
-			"#12345678"
-			"Axxxxxxxx"
-			"Bxxxxxxxx"
-			"Cxxxxxxxx"
-			"Dxxxxxxxx"
-			"Exxxxxxxx"
-			"Fxxxxxxxx"
-			"Gxxxxxxxx"
-			"Hxxxxxxxx"
-			"#########";
+		std::array<std::array<char,9>,9> map{};
 	};
