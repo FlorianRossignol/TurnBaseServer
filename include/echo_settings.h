@@ -2,11 +2,12 @@
 
 #include <cstddef>
 
-namespace echo
+namespace navalbattle
 {
     constexpr unsigned short serverPortNumber = 16000;
     constexpr std::size_t maxDataSize = 256;
-    constexpr int maxClientNmb = 3;
+    constexpr int maxClientNmb = 2;
+    using PlayerNumber = unsigned char;
     enum ServerError
     {
         SERVER_FINISH_OK = 0,

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <array>
 
-	class World
+	class World 
 	{
 
 	public:

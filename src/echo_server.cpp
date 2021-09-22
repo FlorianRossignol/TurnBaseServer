@@ -3,7 +3,7 @@
 #include <iostream>
 #include <array>
 
-namespace echo
+/*namespace navalbattle
 {
 int EchoServer::Run()
 {
@@ -80,4 +80,4 @@ int EchoServer::GetNextSocket()
     }
     return -1;
 }
-}
+}*/

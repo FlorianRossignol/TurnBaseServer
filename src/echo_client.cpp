@@ -5,7 +5,7 @@
 #include <cstring>
 #include <SFML/Network/IpAddress.hpp>
 
-namespace echo
+/*namespace echo
 {
 void EchoClient::Init()
 {
@@ -107,4 +107,4 @@ void EchoClient::DrawImGui()
     }
     ImGui::End();
 }
-}
+}*/

@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 
 #include <system.h>
 #include <array>
@@ -29,4 +29,4 @@ private:
     std::vector<std::string> receivedMsgs_;
 };
 
-}
+}*/

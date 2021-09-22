@@ -5,7 +5,7 @@
 #include <SFML/Network.hpp>
 
 
-namespace echo
+namespace navalbattle
 {
 
 class EchoServer

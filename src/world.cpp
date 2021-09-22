@@ -40,4 +40,3 @@ bool World::CheckImpact()
 {
 	return false;
 }
-

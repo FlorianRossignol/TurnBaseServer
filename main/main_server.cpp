@@ -3,7 +3,7 @@
 
 int main()
 {
-    echo::EchoServer server;
+    //echo::EchoServer server;
 
-    return server.Run();
+    //return server.Run();
 }
