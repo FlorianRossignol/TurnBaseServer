@@ -24,6 +24,18 @@ void navalbattle::NavalBattleClient::Init()
 			window.clear(sf::Color::Black);
 
 			window.display();
+			sf::Font font;
+			if (!font.loadFromFile("Just Another Hand.ttf"))
+			{
+				std::cout << "[Error, no file loaded !]" << "\n";
+			}
+			sf::Text text;
+			text.setFont(font);
+			text.setString("Connect to server :");
+			text.setCharacterSize(24);
+			text.setFillColor(sf::Color::Red);
+			text.setStyle(sf::Text::Bold | sf::Text::Underlined);
+			window.draw(text);
 		}
 		return 0;
 
