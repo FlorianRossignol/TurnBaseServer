@@ -1,9 +1,8 @@
 
-#include "echo_server.h"
+#include <naval_battle_server.h>
 
 int main()
 {
-    //echo::EchoServer server;
-
-    //return server.Run();
+    navalbattle::NavalBattleServer server;
+    return server.Run();
 }

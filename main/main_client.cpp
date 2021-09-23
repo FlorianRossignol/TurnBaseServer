@@ -8,11 +8,11 @@ int main()
 {
     navalbattle::NavalBattleClient navalclient;
     navalbattle::NavalBattleView view(navalclient);
-    view.DrawSfml();
     Engine engine;
     engine.AddSystem(&navalclient);
-    //engine.AddDrawImGuiSystem(&view);
+    engine.AddDrawImGuiSystem(&view);
     engine.Run();
+    //view.DrawSfml();
     return 0;
 }
 

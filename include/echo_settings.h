@@ -4,6 +4,12 @@
 
 namespace navalbattle
 {
+    enum class NavalBattlePhase
+    {   
+        CONNECTION,
+        GAME,
+        END
+    };
     constexpr unsigned short serverPortNumber = 16000;
     constexpr std::size_t maxDataSize = 256;
     constexpr int maxClientNmb = 2;

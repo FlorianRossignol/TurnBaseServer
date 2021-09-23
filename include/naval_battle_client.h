@@ -8,30 +8,34 @@
 
 namespace navalbattle 
 {
-	class NavalBattleClient : public System
-	{
-		public:
-			void Init() override;
-			void Update() override;
-			void Destroy() override;
-			int GetPlayerNumber() const;
-
-		private:
-			sf::TcpSocket socket_;
-			std::array<char, 32> ipAddressBuffer{};
-			int portNumber = serverPortNumber;
-			PlayerNumber playernumber_ = 255u;
-	};
-
-	class NavalBattleView
-	{
+class NavalBattleClient : public System
+{
 	public:
-		NavalBattleView(NavalBattleClient& client);
-		int DrawSfml();
+		sf::Socket::Status Connect(sf::IpAddress adress, unsigned short portNumber);
+		void ReceivedPacket(sf::Packet& packet);
+		void Init() override;
+		void Update() override;
+		void Destroy() override;
+		int GetPlayerNumber() const;
+		NavalBattlePhase GetPhase() const;
+		bool IsConnected() const;
 	private:
-		NavalBattleClient& client_; 
-		int portnumber_ = serverPortNumber;
-		std::string ipAdressBuffer_ = "localhost";
-	};
+		NavalBattlePhase phase_ = NavalBattlePhase::CONNECTION;
+		sf::TcpSocket socket_;
+		std::array<char, 32> ipAddressBuffer{};
+		int portNumber = serverPortNumber;
+		PlayerNumber playernumber_ = 255u;
+};
 
+class NavalBattleView : public DrawImGuiInterface
+{
+public:
+	NavalBattleView(NavalBattleClient& client);
+	int DrawSfml();
+	void DrawImGui() override;
+private:
+	NavalBattleClient& client_;
+	int portnumber_ = serverPortNumber;
+	std::string ipAdressBuffer_ = "localhost";
+};
 }
