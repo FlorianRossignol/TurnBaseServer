@@ -3,6 +3,7 @@
 #include <naval_battle_packet.h>
 #include <imgui.h>
 #include <imgui_stdlib.h>
+#include <world.h>
 
 namespace navalbattle {
 	sf::Socket::Status NavalBattleClient::Connect(sf::IpAddress adress, unsigned short portNumber)
@@ -25,6 +26,18 @@ namespace navalbattle {
 			playernumber_ = gameinitpacket.playerNumber;
 			phase_ = NavalBattlePhase::GAME;
 			std::cout << "You are player " << gameinitpacket.playerNumber + 1 << "\n";
+			break;
+		}
+		case PacketType::MOVE:
+		{
+			if (phase_ != NavalBattlePhase::GAME)
+			{
+				break;
+			}
+			
+			MovePacket movePacket;
+			packet >> movePacket;
+			std::cout << "Receive input packet from player" << movePacket.move.playerNumber + 1 << "\n";
 			break;
 		}
 		}
@@ -61,7 +74,7 @@ namespace navalbattle {
 			text.setString("Connect to server :");
 			text.setCharacterSize(12);
 			text.setFillColor(sf::Color::Red);
-			//text.setStyle(sf::Text::Bold | sf::Text::Underlined);
+			text.setStyle(sf::Text::Bold | sf::Text::Underlined);
 			window.draw(text);
 		}
 		return 0;
@@ -113,9 +126,13 @@ namespace navalbattle {
 			ImGui::End();
 			break;
 		}
-		case NavalBattlePhase::END:
+		case NavalBattlePhase::GAME:
 		{
 			//TODO complete
+			if (client_.IsConnected())
+			{
+				DrawSfml();
+			}
 		}
 		}
 	}

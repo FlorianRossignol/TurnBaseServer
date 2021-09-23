@@ -46,4 +46,26 @@ namespace navalbattle
 	{
 		return packet >> gameInitPacket.playerNumber;
 	}
+
+	struct MovePacket : Packet
+	{
+		Move move;
+	};
+	
+	inline sf::Packet& operator <<(sf::Packet& packet, const MovePacket& movePacket)
+	{
+		return packet << static_cast<unsigned char>(movePacket.packetype)
+			<< movePacket.move.position.x
+			<< movePacket.move.position.y
+			<< movePacket.move.playerNumber;
+	}
+
+	inline sf::Packet& operator >>(sf::Packet& packet, MovePacket& movePacket)
+	{
+		return packet
+			>> movePacket.move.position.x
+			>> movePacket.move.position.y
+			>> movePacket.move.playerNumber;
+	}
+
 }
