@@ -2,7 +2,7 @@
 
 #include <naval_battle_client.h>
 #include "engine.h"
-#include "world.h"
+
 
 int main()
 {

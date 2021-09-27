@@ -3,21 +3,24 @@
 #include <vector>
 #include <imgui-SFML.h>
 
-class Boat
-{
-	enum BoatPos
+namespace navalbattle {
+	class Boat
 	{
-		horizontlal,
-		vertical
-	};
+		enum BoatPos
+		{
+			horizontlal,
+			vertical
+		};
 
-public:
-	void Littleboat();
-	void Mediumboat();
-	void Hightboat();
-	void CheckIntersect();
-	Boat boat();
-private:
-	int lengt = lengt;
-	sf::Vector2i position = position;
-};
+	public:
+		void Littleboat();
+		void Mediumboat();
+		void Hightboat();
+		void CheckIntersect();
+		Boat boat();
+	private:
+		int x, y;
+		int lengt = lengt;
+		sf::Vector2i position = position;
+	};
+}

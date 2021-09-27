@@ -80,6 +80,7 @@ void NavalBattleServer::ReceivedPacket()
 
 void NavalBattleServer::ManageMovePacket(const MovePacket& movepacket)
 {
+	
 
 }
 

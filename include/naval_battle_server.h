@@ -13,6 +13,7 @@ namespace navalbattle
 	public:
 		int Run();
 		int GetNextSocket();
+		std::array<char, 325> worldMap;
 	private:
 		NavalBattlePhase phase_ = NavalBattlePhase::CONNECTION;
 		std::array<sf::TcpSocket, maxClientNmb > sockets_;
@@ -22,6 +23,7 @@ namespace navalbattle
 		void ManageMovePacket(const MovePacket& movepacket);
 		void UpdateConnectionPhase();
 		void StartNewGame();
+		
 	};
 
 }
