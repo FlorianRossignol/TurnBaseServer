@@ -17,6 +17,7 @@ namespace navalbattle {
 		BoatPos::vertical;
 		littleboat.position.x = rand() % 325;
 		littleboat.position.y = rand() % 325;
+		CheckIntersect();
 	}
 
 	void Boat::Mediumboat()
@@ -26,6 +27,7 @@ namespace navalbattle {
 		BoatPos::vertical;
 		mediumboat.position.x = rand() % 325;
 		mediumboat.position.y = rand() % 325;
+		CheckIntersect();
 	}
 
 	void Boat::Hightboat()
@@ -35,18 +37,20 @@ namespace navalbattle {
 		hightboat.position.x = rand() % 325;
 		hightboat.position.y = rand() % 325;
 		BoatPos::horizontlal;
+		CheckIntersect();
 	}
 
-	void Boat::CheckIntersect()
+	bool Boat::CheckIntersect()
 	{
 		Boat boat;
-		NavalBattleClient client;
+		
 			if (boat.position.x && boat.position.y == boat.position.x && boat.position.y)
 			{
 				std::cerr << "[Error]Cant load position";
+				return false;
 				while (boat.position.x && boat.position.y == boat.position.x && boat.position.y)
 				{
-					client.PlaceBoat();
+					return true;
 				}
 			}
 	}

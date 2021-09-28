@@ -23,7 +23,7 @@ namespace navalbattle
 		void ManageMovePacket(const MovePacket& movepacket);
 		void UpdateConnectionPhase();
 		void StartNewGame();
-		
+
 	};
 
 }

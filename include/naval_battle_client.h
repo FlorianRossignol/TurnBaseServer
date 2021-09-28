@@ -20,7 +20,6 @@ public:
 	int GetPlayerNumber() const;
 	NavalBattlePhase GetPhase() const;
 	bool IsConnected() const;
-	void PlaceBoat();
 private:
 	NavalBattlePhase phase_ = NavalBattlePhase::CONNECTION;
 	sf::TcpSocket socket_;
@@ -36,6 +35,7 @@ NavalBattleView(NavalBattleClient& client);
 int DrawSfml();
 void DrawImGui() override;
 bool CheckImpact();
+void PlaceBoat();
 private:
 NavalBattleClient& client_;
 int portnumber_ = serverPortNumber;

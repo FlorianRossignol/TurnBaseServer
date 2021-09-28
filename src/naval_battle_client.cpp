@@ -78,7 +78,7 @@ std::cout << "[Error, no file loaded !]" << "\n";
 sf::Sprite sprite;
 sprite.setTexture(mapTexture);
 window.draw(sprite);
-ImGui::Button("Chat");
+
 window.display();
 }
 return 0;
@@ -136,13 +136,18 @@ case NavalBattlePhase::GAME:
 if (client_.IsConnected())
 {
 DrawSfml();
+if (DrawSfml() == 1)
+{
+	PlaceBoat();
+	std::cerr << "Succes to add Boat in place";
+}
 }
 }
 }
 }
 
 
-void NavalBattleClient::PlaceBoat()
+void NavalBattleView::PlaceBoat()
 {
 	Boat boat;
 	for (int i = 0; i < 325; i++)
@@ -151,6 +156,10 @@ void NavalBattleClient::PlaceBoat()
 		boat.Mediumboat();
 		boat.Hightboat();
 	}
+	BoatPlacePacket boatPlacePacket;
+	boatPlacePacket.packetype = PacketType::MOVE;
+	sf::Packet sentPacket;
+	sentPacket << boatPlacePacket;
 }
 
 bool NavalBattleView::CheckImpact()
@@ -197,5 +206,4 @@ bool NavalBattleClient::IsConnected() const
 {
 return socket_.getLocalPort() != 0;
 }
-
 }

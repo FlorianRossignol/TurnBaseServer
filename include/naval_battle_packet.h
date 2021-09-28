@@ -2,6 +2,7 @@
 
 #include <echo_settings.h>
 #include <SFML/Network/Packet.hpp>
+#include <boat.h>
 
 namespace navalbattle 
 {
@@ -68,4 +69,23 @@ namespace navalbattle
 			>> movePacket.move.playerNumber;
 	}
 
+	struct BoatPlacePacket : Packet
+	{
+		BoatPosition boatpos;
+	};
+
+	inline sf::Packet& operator <<(sf::Packet& packet, const BoatPlacePacket& BoatPlacePacket)
+	{
+		return packet << static_cast<unsigned char>(BoatPlacePacket.packetype)
+			<< BoatPlacePacket.boatpos.position.x
+			<< BoatPlacePacket.boatpos.position.y;
+	}
+
+	inline sf::Packet& operator >>(sf::Packet& packet, BoatPlacePacket& BoatPlacePacket)
+	{
+		return packet
+			>> BoatPlacePacket.boatpos.position.x
+			>> BoatPlacePacket.boatpos.position.y;
+			
+	}
 }

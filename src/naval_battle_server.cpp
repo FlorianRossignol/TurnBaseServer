@@ -70,8 +70,11 @@ void NavalBattleServer::ReceivedPacket()
 					MovePacket movePacket;
 					receivedPacket >> movePacket;
 					ManageMovePacket(movePacket);
+					BoatPlacePacket boatPlacePacket;
+					receivedPacket >> boatPlacePacket;
 					break;
 				}
+				
 				}
 			}
 		}
@@ -81,7 +84,6 @@ void NavalBattleServer::ReceivedPacket()
 void NavalBattleServer::ManageMovePacket(const MovePacket& movepacket)
 {
 	
-
 }
 
 void NavalBattleServer::UpdateConnectionPhase()
@@ -100,6 +102,10 @@ void NavalBattleServer::UpdateConnectionPhase()
 			{
 				StartNewGame();
 			}
+			else 
+			{
+				std::cout << "waiting for 2nd player !";
+			}
 		}
 	}
 }
@@ -117,7 +123,7 @@ void NavalBattleServer::StartNewGame()
 	for (unsigned char i = 0; i < sockets_.size(); i++)
 	{
 		GameInitPacket gameInitPacket{};
-		gameInitPacket.packetype = PacketType::GAME_INIT;
+		gameInitPacket.packetype = PacketType::GAME_INIT; 
 		gameInitPacket.playerNumber = i != dice_roll;
 		sf::Packet sentPacket;
 		sentPacket << gameInitPacket;

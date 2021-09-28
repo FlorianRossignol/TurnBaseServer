@@ -16,11 +16,16 @@ namespace navalbattle {
 		void Littleboat();
 		void Mediumboat();
 		void Hightboat();
-		void CheckIntersect();
+		bool CheckIntersect();
 		Boat boat();
 	private:
 		int x, y;
 		int lengt = lengt;
 		sf::Vector2i position = position;
+	};
+	struct BoatPosition
+	{
+		sf::Vector2i position = position;
+		int x, y;
 	};
 }
