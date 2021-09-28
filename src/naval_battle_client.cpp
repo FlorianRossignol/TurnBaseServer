@@ -78,7 +78,11 @@ std::cout << "[Error, no file loaded !]" << "\n";
 sf::Sprite sprite;
 sprite.setTexture(mapTexture);
 window.draw(sprite);
-
+if (client_.GetPhase() == NavalBattlePhase::GAME &&
+	client_.GetMoveIndex() % 2 == client_.GetPlayerNumber())
+{
+	DrawCursor(window);
+}
 window.display();
 }
 return 0;
@@ -162,6 +166,36 @@ void NavalBattleView::PlaceBoat()
 	sentPacket << boatPlacePacket;
 }
 
+void NavalBattleView::DrawCursor(sf::RenderWindow& window)
+{
+	const auto& mousePos = sf::Mouse::getPosition(window);
+	if (mousePos.x < boardOrigin_.x || mousePos.y < boardOrigin_.y)
+	{
+		cursorPos_ = sf::Vector2i(-1, -1);
+		return;
+	}
+	if (mousePos.x > boardOrigin_.x + boardWindowSize_.x ||
+		mousePos.y > boardOrigin_.y + boardWindowSize_.y)
+	{
+		cursorPos_ = sf::Vector2i(-1, -1);
+		return;
+	}
+	cursorPos_ = sf::Vector2i(
+		mousePos.x / (boardWindowSize_.x / 3),
+		mousePos.y / (boardWindowSize_.y / 3)
+	);
+	rect_ = sf::RectangleShape();
+	rect_.setOrigin({});
+	rect_.setFillColor(sf::Color(255u, 255u, 255u, 100u));
+	rect_.setSize(sf::Vector2f(tileSize_));
+	rect_.setPosition(sf::Vector2f
+	(
+		cursorPos_.x * (tileSize_.x + thickness),
+		cursorPos_.y * (tileSize_.y + thickness)
+	));
+	window.draw(rect_);
+}
+
 bool NavalBattleView::CheckImpact()
 {
 return false;
@@ -205,5 +239,9 @@ return phase_;
 bool NavalBattleClient::IsConnected() const
 {
 return socket_.getLocalPort() != 0;
+}
+unsigned char NavalBattleClient::GetMoveIndex() const
+{
+	return currentMoveIndex_;
 }
 }
