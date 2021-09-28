@@ -12,7 +12,6 @@ int main()
     engine.AddSystem(&navalclient);
     engine.AddDrawImGuiSystem(&view);
     engine.Run();
-    //view.DrawSfml();
     return 0;
 }
 

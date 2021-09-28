@@ -29,16 +29,15 @@ private:
 	PlayerNumber playernumber_ = 255u;
 };
 
-class NavalBattleView : public DrawImGuiInterface, public DrawInterface
+class NavalBattleView : public DrawImGuiInterface
 {
 public:
-NavalBattleView(NavalBattleClient& client,NavalBattleServer server);
+NavalBattleView(NavalBattleClient& client);
 int DrawSfml();
 void DrawImGui() override;
 bool CheckImpact();
 private:
 NavalBattleClient& client_;
-NavalBattleServer& server_;
 int portnumber_ = serverPortNumber;
 std::string ipAdressBuffer_ = "localhost";	
 

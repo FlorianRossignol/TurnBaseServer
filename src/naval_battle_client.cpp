@@ -50,7 +50,7 @@ std::memcpy(ipAddressBuffer.data(), adress, std::strlen(adress) + 1);
 }
 
 
-NavalBattleView::NavalBattleView(NavalBattleClient& client,NavalBattleServer server) : client_(client), server_(server)
+NavalBattleView::NavalBattleView(NavalBattleClient& client) : client_(client)
 {
 }	
 
@@ -71,7 +71,7 @@ window.clear(sf::Color::Black);
 
 			
 sf::Texture mapTexture;
-if (!mapTexture.loadFromFile("C:/Users/fmusi/sae/TurnBaseServer/image/naval battle map 47x96 site.jpg"))
+if (!mapTexture.loadFromFile("C:/Users/fmusi/Desktop/Mygame/TurnBaseServer/image/naval battle map 47x96 site.jpg"))
 {
 std::cout << "[Error, no file loaded !]" << "\n";
 }

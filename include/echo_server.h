@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 
 #include <array>
 #include <echo_settings.h>
@@ -20,4 +20,4 @@ private:
     int GetNextSocket();
 };
 
-}
+}*/
