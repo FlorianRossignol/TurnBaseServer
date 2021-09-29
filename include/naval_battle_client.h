@@ -41,6 +41,7 @@ void DrawImGui() override;
 bool CheckImpact();
 void PlaceBoat();
 private:
+	void DrawBoat(sf::CircleShape& circle, sf::RenderWindow& window);
 	void DrawCursor(sf::RenderWindow& window);
 NavalBattleClient& client_;
 int portnumber_ = serverPortNumber;

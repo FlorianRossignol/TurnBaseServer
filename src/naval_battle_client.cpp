@@ -244,4 +244,19 @@ unsigned char NavalBattleClient::GetMoveIndex() const
 {
 	return currentMoveIndex_;
 }
+
+void NavalBattleView::DrawBoat(sf::CircleShape& circle, sf::RenderWindow& window)
+{
+	Boat boat;
+	circle = sf::CircleShape();
+	circle.setOrigin({});
+	circle.setFillColor(sf::Color(255u, 255u, 255u, 100u));
+	//circle.setPosition(sf::Vector2f(boat.boat(), boat.boat()));
+	window.draw(circle);
+	BoatPlacePacket boatPlacePacket;
+	boatPlacePacket.packetype = PacketType::MOVE;
+	sf::Packet sentPacket;
+	sentPacket << boatPlacePacket;
+}
+
 }
